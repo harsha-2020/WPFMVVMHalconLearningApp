@@ -1,0 +1,71 @@
+﻿<Window x:Class="WPFMVVMHalconLearning.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFMVVMHalconLearning"
+        xmlns:HalconDotNet="clr-namespace:HalconDotNet;assembly=halcondotnet"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <HalconDotNet:HSmartWindowControlWPF 
+            Grid.Row="0"
+            Height="400" 
+            Width="600"
+            Margin="0 10 0 10"
+            Name="HalconSmartDisplayWindowWPF">
+            <HalconDotNet:HIconicDisplayObjectWPF IconicObject="{Binding DisplayImage}"/>
+            <HalconDotNet:HIconicDisplayObjectWPF IconicObject="{Binding DisplayRegion}" HColor="magenta"/>
+        </HalconDotNet:HSmartWindowControlWPF>
+
+        <StackPanel 
+            Grid.Row="1"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <TextBlock
+                Name="RegionMinimumGrayValueTextBlock"
+                Text="Region Minimum Gray Value"
+                Width="200"
+                Height="30"
+                TextAlignment="Center"
+                FontSize="16"
+                Margin="5"/>
+            <TextBox
+                Name="RegionMinimumGrayValueTextBox"
+                Width="200"
+                Height="30"
+                VerticalAlignment="Top"
+                Margin="5"
+                Text="{Binding PrinterChipAnalysis.MinGrayValue}"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <Button 
+                Name="ShowImageButton" 
+                Content="Show Image"
+                Width="200"
+                Height="30"
+                VerticalContentAlignment="Center"
+                Margin="5"
+                Command="{Binding ShowImageCommand}"/>
+            <Button
+                Name="ShowImageRegionsButton"
+                Content="Show Image Regions"
+                Width="200"
+                Height="30"
+                Margin="5"
+                Command="{Binding ShowRegionCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
