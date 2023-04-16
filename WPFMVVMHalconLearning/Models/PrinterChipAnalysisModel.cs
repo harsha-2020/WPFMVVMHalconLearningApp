@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using HalconDotNet;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 
@@ -14,15 +15,15 @@ namespace WPFMVVMHalconLearning.Models
 		private HRegion _ChipRegion;
 
 		[ObservableProperty]
-		private int _MinGrayValue = 255;
+		private int _MinGray;
 
 		[ObservableProperty]
-		private int _MaxGrayValue = 255;
+		private int _MaxGray;
 
         public PrinterChipAnalysisModel(HImage image)
         {
             Image = image;
-        }
+		}
 
         public HRegion ChipRegionProcedure()
 		{
@@ -32,8 +33,8 @@ namespace WPFMVVMHalconLearning.Models
 			HDevProcedure procedure = new HDevProcedure("get_printer_chip_regions");
 			HDevProcedureCall ProcedureCall = new HDevProcedureCall(procedure);
 			ProcedureCall.SetInputIconicParamObject("Image", Image);
-			ProcedureCall.SetInputCtrlParamTuple("MinGray", (HTuple)MinGrayValue);
-			ProcedureCall.SetInputCtrlParamTuple("MaxGray", (HTuple)MaxGrayValue);
+			ProcedureCall.SetInputCtrlParamTuple("MinGray", (HTuple)MinGray);
+			ProcedureCall.SetInputCtrlParamTuple("MaxGray", (HTuple)MaxGray);
 			ProcedureCall.Execute();
 			HRegion ChipRegion = ProcedureCall.GetOutputIconicParamRegion("ConnectedRegions");
 			Engine.Dispose();

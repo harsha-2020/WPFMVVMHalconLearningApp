@@ -45,7 +45,7 @@
                 Height="30"
                 VerticalAlignment="Top"
                 Margin="5"
-                Text="{Binding PrinterChipAnalysis.MinGrayValue}"
+                Text="{Binding PrinterChipAnalysis.MinGray}"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"/>
         </StackPanel>
@@ -69,7 +69,7 @@
                 Height="30"
                 VerticalAlignment="Top"
                 Margin="5"
-                Text="{Binding PrinterChipAnalysis.MaxGrayValue}"
+                Text="{Binding PrinterChipAnalysis.MaxGray}"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"/>
         </StackPanel>

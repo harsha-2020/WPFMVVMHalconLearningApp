@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HalconDotNet;
+using Newtonsoft.Json;
+using System.IO;
+using WPFMVVMHalconLearning.DataService;
 using WPFMVVMHalconLearning.Models;
 
 namespace WPFMVVMHalconLearning.ViewModels
@@ -13,6 +16,7 @@ namespace WPFMVVMHalconLearning.ViewModels
         {
 			image = new HImage(@"..\..\..\Images\chipTest.tif");
 			PrinterChipAnalysis = new PrinterChipAnalysisModel(image);
+			PrinterChipAnalysis = ReadDefaultJSONData();
 		}
 
 		[ObservableProperty]
@@ -37,6 +41,14 @@ namespace WPFMVVMHalconLearning.ViewModels
 		public void ShowRegion()
 		{			
 			DisplayRegion = PrinterChipAnalysis.ChipRegionProcedure();			
+		}
+
+		public PrinterChipAnalysisModel ReadDefaultJSONData()
+		{
+			string jsonFilePath = @"..\..\..\Recipe\Default.json";
+			string jsonContent = File.ReadAllText(jsonFilePath);
+			_PrinterChipAnalysis = JsonConvert.DeserializeObject<PrinterChipAnalysisModel>(jsonContent);
+			return _PrinterChipAnalysis;
 		}
 	}
 }
