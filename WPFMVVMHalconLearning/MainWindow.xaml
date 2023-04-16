@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Halcon Image Display Window (Binding Image and Regions from MainViewModel) -->
         <HalconDotNet:HSmartWindowControlWPF 
             Grid.Row="0"
             Height="400" 
@@ -24,6 +25,7 @@
             <HalconDotNet:HIconicDisplayObjectWPF IconicObject="{Binding DisplayRegion}" HColor="magenta"/>
         </HalconDotNet:HSmartWindowControlWPF>
 
+        <!-- TextBlock and TextBox-->
         <StackPanel 
             Grid.Row="1"
             Orientation="Horizontal"
@@ -47,6 +49,7 @@
                 VerticalContentAlignment="Center"/>
         </StackPanel>
 
+        <!-- Buttons Show Image & Show Regions -->
         <StackPanel
             Grid.Row="2"
             Orientation="Horizontal"
