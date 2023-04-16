@@ -10,10 +10,11 @@
 </oo>
 <ic>
 <par name="MinGray" base_type="ctrl" dimension="0"/>
+<par name="MaxGray" base_type="ctrl" dimension="0"/>
 </ic>
 </interface>
 <body>
-<l>threshold (Image, Region, MinGray, 255)</l>
+<l>threshold (Image, Region, MinGray, MaxGray)</l>
 <l>connection (Region, ConnectedRegions)</l>
 <l>return ()</l>
 </body>
@@ -21,6 +22,7 @@
 <parameters>
 <parameter id="ConnectedRegions"/>
 <parameter id="Image"/>
+<parameter id="MaxGray"/>
 <parameter id="MinGray"/>
 </parameters>
 </docu>
