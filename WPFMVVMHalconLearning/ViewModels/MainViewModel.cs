@@ -15,8 +15,8 @@ namespace WPFMVVMHalconLearning.ViewModels
         public MainViewModel()
         {
 			image = new HImage(@"..\..\..\Images\chipTest.tif");
-			PrinterChipAnalysis = new PrinterChipAnalysisModel(image);
-			PrinterChipAnalysis = ReadDefaultJSONData();
+			PrinterChipAnalysis = ReadDefaultJSONData(PrinterChipAnalysis);
+			PrinterChipAnalysis.Image = image;
 		}
 
 		[ObservableProperty]
@@ -43,12 +43,12 @@ namespace WPFMVVMHalconLearning.ViewModels
 			DisplayRegion = PrinterChipAnalysis.ChipRegionProcedure();			
 		}
 
-		public PrinterChipAnalysisModel ReadDefaultJSONData()
+		public PrinterChipAnalysisModel ReadDefaultJSONData(PrinterChipAnalysisModel PrinterChipAnalysis)
 		{
 			string jsonFilePath = @"..\..\..\Recipe\Default.json";
 			string jsonContent = File.ReadAllText(jsonFilePath);
-			_PrinterChipAnalysis = JsonConvert.DeserializeObject<PrinterChipAnalysisModel>(jsonContent);
-			return _PrinterChipAnalysis;
+			PrinterChipAnalysis = JsonConvert.DeserializeObject<PrinterChipAnalysisModel>(jsonContent);
+			return PrinterChipAnalysis;
 		}
 	}
 }

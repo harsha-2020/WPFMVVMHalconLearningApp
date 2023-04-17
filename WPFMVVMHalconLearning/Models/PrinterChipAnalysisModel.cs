@@ -20,11 +20,6 @@ namespace WPFMVVMHalconLearning.Models
 		[ObservableProperty]
 		private int _MaxGray;
 
-        public PrinterChipAnalysisModel(HImage image)
-        {
-            Image = image;
-		}
-
         public HRegion ChipRegionProcedure()
 		{
 			string procedurePath = @"..\..\..\HalconProcedures";
